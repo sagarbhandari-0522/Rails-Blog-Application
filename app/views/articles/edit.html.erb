@@ -1,0 +1,21 @@
+<% if @article.errors.any?%>
+	<% @article.errors.full_messages.each do|message|%>
+		<%= message%><br>
+	<% end%>
+<% end %>
+<h1> Create Articles </h1>
+<%= form_with model: @article do |f|%>
+	<div>
+		<%= f.label :title%>
+		<%= f.text_field :title%>
+	</div>
+	<br>
+	<div>
+		<%= f.label :description%>
+		<%= f.text_field :description%>
+	</div>
+	<br>
+	<div>
+		<%= f.submit data: {turbo:false}%>
+	</div>
+<% end %>
