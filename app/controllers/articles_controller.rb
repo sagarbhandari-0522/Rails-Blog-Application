@@ -15,9 +15,11 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      @article.save
+      flash[:notice] = 'Articles Created Successfully'
       redirect_to article_path(@article)
     else
+      flash[:alert] = 'Articles Created Unsuccessfull'
+
       render :new, status: :unprocessable_entity
     end
   end
@@ -26,6 +28,7 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
+      flash[:notice] = 'Articles updated Successfully'
       redirect_to article_path(@article)
     else
       render :edit, status: :unprocessable_entity
@@ -34,6 +37,8 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
+    flash[:notice] = 'Articles Deleted Successfully'
+
     redirect_to articles_path, status: :see_other
   end
 
