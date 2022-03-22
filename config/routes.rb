@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # get '/articles/:id', to: 'articles#show'
+  get '/index', to: 'welcomes#index', as: :home
+  get '/about', to: 'welcomes#about', as: :about
   resources :articles
-  root 'articles#index'
+  root 'welcomes#index'
 end
