@@ -1,17 +1,10 @@
-<% if false%>
-	<%= @article.title%>
-	<%= @article.description%>
-	<%= link_to 'Edit', edit_article_path(@article) %>
-	<%= link_to 'Delete', article_path(@article), data:{turbo_method: :delete} %>
-	<%= link_to 'Back', articles_path %>
-<%end%>
 <div class=" container card my-5">
 	<div class="card-header text-center">
 		<h1><%= @article.title%></h1>
 	</div>
 	<div class="card-body">
 		<h3 class="card-title text-center">Description:</h3>
-		<p class="card-text"><%=@article.description%></p>
+		<p class="card-text"><%=simple_format(@article.description)%></p>
 	</div>
 	<div class="card-footer text-muted">
 		<button class="button btn-primary" role="button"><%= link_to 'Edit this article', edit_article_path(@article),class:"text-light text-decoration-none" %></button>

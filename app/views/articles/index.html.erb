@@ -1,10 +1,12 @@
-<h1> Articles </h1>
+<h1 class="text-center my-4"> Listing all articles </h1>
 <% @articles.each do |article|%>
-	<ul>
-		<li>
-			<p><b><%= article.title%></b>
-				<%= link_to 'Show', article_path(article) %></p>
-		</li>
-	</ul>
+	<div class="card container col-md-8 mb-4">
+		<h5 class="card-header"><%= article.title.titlecase%></h5>
+		<div class="card-body">
+			<p class="card-text lead"><%= article.description.truncate(100) %></p>
+			<button class="button btn-success"><%= link_to 'View ', article_path(article),class:"text-light text-decoration-none" %></button>
+			<button class="button btn-warning"><%= link_to 'Edit ', edit_article_path(article),class:"text-light text-decoration-none" %></button>
+		</div>
+	</div>
 <%end%>
-<%= link_to 'New Article', new_article_path %>
+<button class="button btn-primary new_article"><%= link_to 'New Article',new_article_path,class:"text-light text-decoration-none" %></button>
