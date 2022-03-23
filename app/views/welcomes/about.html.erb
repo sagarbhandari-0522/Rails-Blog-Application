@@ -1,2 +1,47 @@
-<h1>This is about Page </h1>
-<%= link_to 'Home', home_path %>
+<%= stylesheet_link_tag 'about' %>
+<div class="about-section">
+	<h1>About Us Page</h1>
+	<p>The Blogger web allows you to post, edit, save, and view your blog posts. <br>
+		Anyone with Android 5.0 and up can download the app.</p>
+	<p class="lead">Alpha Blog</p>
+</div>
+<h2 style="text-align:center">Our Team</h2>
+<div class="row">
+	<div class="column">
+		<div class="card">
+			<%= image_tag('sagar.jpg',width:400, height:600) %>
+			<div class="container">
+				<h2>Jane Doe</h2>
+				<p class="title">CEO & Founder</p>
+				<p>Some text that describes me lorem ipsum ipsum lorem.</p>
+				<p>jane@example.com</p>
+				<p><button class="button_about">Contact</button></p>
+			</div>
+		</div>
+	</div>
+	<div class="column">
+		<div class="card">
+			<%= image_tag('sagar1.jpg',width:400, height:600) %>
+			<div class="container">
+				<h2>Mike Ross</h2>
+				<p class="title">Art Director</p>
+				<p>Some text that describes me lorem ipsum ipsum lorem.</p>
+				<p>mike@example.com</p>
+				<p><button class="button_about">Contact</button></p>
+			</div>
+		</div>
+	</div>
+	<div class="column">
+		<div class="card">
+			<%= image_tag('sagar1.jpg',width:400, height:600) %>
+			<div class="container">
+				<h2>Mike Ross</h2>
+				<p class="title">Art Director</p>
+				<p>Some text that describes me lorem ipsum ipsum lorem.</p>
+				<p>mike@example.com</p>
+				<p><button class="button_about">Contact</button></p>
+			</div>
+		</div>
+	</div>
+</div>
+<button class="button new_article btn-primary"><%= link_to 'Home',home_path,class:"text-light text-decoration-none" %></button>
