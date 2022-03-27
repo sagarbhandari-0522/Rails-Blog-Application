@@ -10,6 +10,7 @@ gem 'htmlbeautifier', '~> 1.3', '>= 1.3.1'
 gem 'rails', '~> 7.0.2', '>= 7.0.2.3'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'byebug'
+gem 'pagy', '~> 5.10'
 gem 'sprockets-rails'
 
 # Use sqlite3 as the database for Active Record

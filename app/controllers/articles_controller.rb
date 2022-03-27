@@ -3,7 +3,7 @@
 class ArticlesController < ApplicationController
   before_action :find_article, only: %i[show edit update destroy]
   def index
-    @articles = Article.all
+    @pagy, @articles = pagy(Article.all, items: 5)
   end
 
   def show; end

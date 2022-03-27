@@ -1,14 +1,16 @@
 class UsersController < ApplicationController
   before_action :find_user, only: %i[show edit update destroy]
   def index
-    @users = User.all
+    @pagy, @users = pagy(User.all)
   end
 
   def new
     @user = User.new
   end
 
-  def show; end
+  def show
+    @pagy, @user_articles = pagy(@user.articles, items: 2)
+  end
 
   def create
     @user = User.new(user_params)
