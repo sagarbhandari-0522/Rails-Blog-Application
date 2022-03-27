@@ -3,7 +3,12 @@
 		<h1><%= @article.title%></h1>
 	</div>
 	<div class="card-body">
-		<h3 class="card-title text-center">Description:</h3>
+		<div class=float-end>
+			<p class="mb-0"> Created by:</p>
+			<% user=@article.user%>
+			<%= link_to user_gravatar(user), user_path(user) %>
+		</div>
+		<h3 class="card-title">Description:</h3>
 		<p class="card-text"><%=simple_format(@article.description)%></p>
 	</div>
 	<div class="card-footer text-muted">

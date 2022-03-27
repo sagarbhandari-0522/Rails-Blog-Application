@@ -1,0 +1,15 @@
+<% obj.each do |article|%>
+	<div class="card container col-md-8 mb-4">
+		<h5 class="card-header"><%= article.title.titlecase%></h5>
+		<div class="card-body">
+			<p class="card-text lead"><%= article.description.truncate(100) %></p>
+			<hr>
+			<p class='small'>Created By: <strong><%= article.user.username if article.user%></strong>,
+				about <%=time_ago_in_words(article.created_at)%> and 
+				Last updated at: <%=time_ago_in_words(article.updated_at)%>
+			</p>
+			<button class="button btn-success"><%= link_to 'View ', article_path(article),class:"text-light text-decoration-none" %></button>
+			<button class="button btn-warning"><%= link_to 'Edit ', edit_article_path(article),class:"text-light text-decoration-none" %></button>
+		</div>
+	</div>
+<%end%>

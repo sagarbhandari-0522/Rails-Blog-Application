@@ -1,35 +1,4 @@
 <h1 class="text-center my-4"> Listing all articles </h1>
-<% @articles.each do |article|%>
-	<div class="card container col-md-8 mb-4">
-		<h5 class="card-header"><%= article.title.titlecase%></h5>
-		<div class="card-body">
-			<p class="card-text lead"><%= article.description.truncate(100) %></p>
-			<hr>
-			<% if false%>
-				<%
-				a='Sagar'
-				created_diff=Time.now-article.created_at
-				updated_diff=Time.now-article.updated_at
-				if(created_diff<86400)
-					created_at=pluralize((created_diff/1.hours).round(),'hour')
-				else
-					created_at=pluralize((created_diff/1.days).round(),'day')
-				end
-				if (updated_diff<86400)
-					updated_at=pluralize((updated_diff/1.hours).round(),'hour')
-				else
-					updated_at=pluralize((updated_diff/1.days).round(),'day')
-				end
-				%>
-			<%end%>
-			<p class='small'>Created By: <strong><%= article.user.username if article.user%></strong>,
-				about <%=time_ago_in_words(article.created_at)%> and 
-				Last updated at: <%=time_ago_in_words(article.updated_at)%>
-			</p>
-			<button class="button btn-success"><%= link_to 'View ', article_path(article),class:"text-light text-decoration-none" %></button>
-			<button class="button btn-warning"><%= link_to 'Edit ', edit_article_path(article),class:"text-light text-decoration-none" %></button>
-		</div>
-	</div>
-<%end%>
+<%=render 'article',obj:@articles%>
 <button class="button btn-primary d-md-none"><%= link_to 'New Article',new_article_path,class:"text-light text-decoration-none" %></button>
 <button class="button btn-primary new_article d-none d-md-block"><%= link_to 'New Article',new_article_path,class:"text-light text-decoration-none" %></button>
