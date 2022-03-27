@@ -2,7 +2,7 @@
 	<div class="card mt-2 col-sm-8 bg-warning text-danger">
 		<h5 class="card-header ">
 			<%= pluralize(obj.errors.count,"error")%>
-			prohibited this article from being saved:
+			<%="prohibited this #{a} from being saved:"%>
 		</h5>
 		<div class="card-body">
 			<ul>
