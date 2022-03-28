@@ -9,7 +9,7 @@
 				Last updated at: <%=time_ago_in_words(article.updated_at)%>
 			</p>
 			<button class="button btn-success"><%= link_to 'View ', article_path(article),class:"text-light text-decoration-none" %></button>
-			<% if logged_in? && current_user==article.user%>
+			<% if logged_in? and current_user==article.user || current_user.admin?%>
 				<button class="button btn-warning"><%= link_to 'Edit ', edit_article_path(article),class:"text-light text-decoration-none" %></button>
 			<% end %>
 		</div>

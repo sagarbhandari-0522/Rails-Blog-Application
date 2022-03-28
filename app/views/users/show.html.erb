@@ -1,7 +1,7 @@
 <div class='container text-center mt-5'>
-	<h1>Welcome to Sagar Page</h1>
+	<h1>Welcome to <%=@user.username.titlecase%> Page</h1>
 	<%= user_gravatar @user,size:150%>
-	<p class="lead"><%=@user.username%> Articles</p>
+	<p class="lead">@<%=@user.username.titlecase%> Articles</p>
 </div>
 <%=render 'articles/article',obj:@user_articles%>
 <div class="float-start mb-2"><%== pagy_bootstrap_nav(@pagy) %></div>

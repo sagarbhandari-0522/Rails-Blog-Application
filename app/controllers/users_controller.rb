@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :find_user, only: %i[show edit update destroy]
-  before_action :authenticate_user, except: %i[index show]
+  before_action :authenticate_user, only: %i[edit update show]
+  before_action :require_admin, only: %i[destroy]
+  before_action :authenticate_same_user, only: %i[edit update]
 
   def index
     @pagy, @users = pagy(User.all)
@@ -39,6 +41,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    redirect_to users_path, status: 303
+  end
+
+  def authenticate_same_user
+    if current_user != @user && !current_user.admin
+      flash[:danger] = 'You dont have access'
+      redirect_to login_path, status: 303
+    end
+  end
+
   private
 
   def user_params
@@ -47,5 +61,12 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.find_by_id(params[:id])
+  end
+
+  def require_admin
+    unless current_user.admin
+      flash[:danger] = 'Only admin users can perform that action'
+      redirect_to articles_path
+    end
   end
 end
