@@ -12,8 +12,10 @@
 		<p class="card-text"><%=simple_format(@article.description)%></p>
 	</div>
 	<div class="card-footer text-muted">
-		<button class="button btn-primary" role="button"><%= link_to 'Edit this article', edit_article_path(@article),class:"text-light text-decoration-none" %></button>
-		<button class="button btn-danger"><%= link_to 'Delete this article', article_path(@article), data:{turbo_method: :delete},class:"text-light text-decoration-none" %></button>
+		<% if logged_in? && current_user==@article.user%>
+			<button class="button btn-primary" role="button"><%= link_to 'Edit this article', edit_article_path(@article),class:"text-light text-decoration-none" %></button>
+			<button class="button btn-danger"><%= link_to 'Delete this article', article_path(@article), data:{turbo_method: :delete},class:"text-light text-decoration-none" %></button>
+		<% end %>
 		<button class="button btn-success"><%= link_to 'View all articles', articles_path,class:"text-light text-decoration-none" %></button>
 	</div>
 </div>

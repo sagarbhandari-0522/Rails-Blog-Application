@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   # get '/articles/:id', to: 'articles#show'
   get '/index', to: 'welcomes#index', as: :home
   get '/about', to: 'welcomes#about', as: :about
+  get '/login', to: 'sessions#new', as: :login
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy', as: :logout
   resources :articles
   resources :users
   root 'welcomes#index'

@@ -2,6 +2,9 @@
 
 class ArticlesController < ApplicationController
   before_action :find_article, only: %i[show edit update destroy]
+  before_action :authenticate_user, except: %i[index show edit]
+  before_action :authenticate_same_user, only: %i[edit update delete]
+
   def index
     @pagy, @articles = pagy(Article.all, items: 5)
   end
