@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :find_category, only: %i[show edit update destroy]
+  before_action :require_admin, only: %i[new create edit update destroy]
+
   def index
     @categories = Category.all
   end
@@ -49,5 +51,12 @@ class CategoriesController < ApplicationController
 
   def find_category
     @category = Category.find_by_id(params[:id])
+  end
+
+  def require_admin
+    unless logged_in? && current_user.admin
+      flash[:danger] = 'Only admin users can perform that action'
+      redirect_to articles_path
+    end
   end
 end

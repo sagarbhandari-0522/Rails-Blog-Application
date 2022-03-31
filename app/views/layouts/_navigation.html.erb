@@ -22,6 +22,23 @@
 						</ul>
 					</li>
 				<% end %>
+				<% if logged_in?%>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Categories
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown"> <%= link_to 'All Categories', categories_path,class:'dropdown-item' %>
+							<% categories=Category.all%>
+							<% categories.each do |category|%>
+								<li><%= link_to category.name, category_path(category) , class:'dropdown-item'%></li>
+							<% end %>
+							<% if logged_in? and current_user.admin%>
+								<li><hr class="dropdown-divider"></li>
+								<li><%= link_to 'New Category', new_category_path, class: 'dropdown-item' %></li>
+							<% end %>
+						</ul>
+					</li>
+				<% end %>
 				<li class="nav-item">
 					<%= link_to 'Out Teams', users_path, class:'nav-link' %>
 				</li>
