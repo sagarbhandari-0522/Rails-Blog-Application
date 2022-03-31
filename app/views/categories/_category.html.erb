@@ -1,0 +1,7 @@
+<% obj.each do |category|%>
+	<div class="card container col-md-8 mb-4">
+		<h5 class="card-header">
+			<%= link_to category.name.titlecase,category_path(category) %>
+		</h5>
+	</div>
+<%end%>

@@ -1,0 +1,6 @@
+<h1 class="text-center my-4"> Listing all Categories </h1>
+<%=render 'category',obj:@categories%>
+<% if logged_in?%>
+	<button class="button btn-primary d-md-none"><%= link_to 'New Category',new_category_path,class:"text-light text-decoration-none" %></button>
+	<button class="button btn-primary new_article d-none d-md-block"><%= link_to 'New Category',new_category_path,class:"text-light text-decoration-none" %></button>
+<% end %>
