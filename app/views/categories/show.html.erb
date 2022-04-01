@@ -1,5 +1,2 @@
-<div class=" container card my-5">
-	<div class="card-header text-center">
-		<h1><%= @category.name%></h1>
-	</div>
-</div>
+<h1 class="text-center my-4">Category: <%= @category.name%></h1>
+<%= render 'articles/article',obj:@category_articles%>

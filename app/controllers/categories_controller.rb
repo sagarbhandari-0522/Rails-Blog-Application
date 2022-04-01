@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    redirect_to categories_path, status: :unprocessable_entity unless @category
+    @category_articles = @category.articles
   end
 
   def new

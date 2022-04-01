@@ -1,10 +1,10 @@
 <h1 class="text-center my-4"> Listing all Categories </h1>
-<%=render 'category',obj:@categories%>
 <% @categories.each do |category|%>
 	<div class="card container col-md-8 mb-4">
-		<h5 class="card-header">
-			<%= link_to category.name.titlecase,category_path(category) %>
-		</h5>
+		<div class="card-header  text-center">
+			<h3><%= link_to category.name.upcase,category_path(category), class:'text-decoration-none'%></h3>
+			<p class="text-secondary"> <%= pluralize(category.articles.count, 'Article')%></p>
+		</div>
 	</div>
 <%end%>
 <% if logged_in?%>
