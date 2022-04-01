@@ -11,6 +11,9 @@
 		<h3 class="card-title">Description:</h3>
 		<p class="card-text"><%=simple_format(@article.description)%></p>
 	</div>
+	<% if @article.categories%>
+		<p> Categories: <%= render @article.categories%></p>
+	<% end %>
 	<div class="card-footer text-muted">
 		<% if logged_in? and (current_user==@article.user || current_user.admin)%>
 			<button class="button btn-primary" role="button"><%= link_to 'Edit this article', edit_article_path(@article),class:"text-light text-decoration-none" %></button>
