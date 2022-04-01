@@ -7,7 +7,7 @@
 		</div>
 	</div>
 <%end%>
-<% if logged_in?%>
+<% if logged_in? and current_user.admin%>
 	<button class="button btn-primary d-md-none"><%= link_to 'New Category',new_category_path,class:"text-light text-decoration-none" %></button>
 	<button class="button btn-primary new_article d-none d-md-block"><%= link_to 'New Category',new_category_path,class:"text-light text-decoration-none" %></button>
 <% end %>

@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category_articles = @category.articles
+    @pagy, @category_articles = pagy(@category.articles, items: 2)
   end
 
   def new
@@ -17,10 +17,10 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      flash[:success] = 'categorys Created Successfully'
+      flash[:success] = 'Category Created Successfully'
       redirect_to category_path(@category)
     else
-      flash[:danger] = 'categorys Created Unsuccessfull'
+      flash[:danger] = 'Category Created Unsuccessfull'
       render :new, status: :unprocessable_entity
     end
   end
@@ -29,17 +29,17 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      flash[:success] = 'categorys updated Successfully'
+      flash[:success] = 'Category Updated Successfully'
       redirect_to category_path(@category)
     else
-      flash[:danger] = "categorys isn't Updated"
+      flash[:danger] = "Category isn't Updated"
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @category.destroy
-    flash[:danger] = 'categorys Deleted Successfully'
+    flash[:danger] = 'Category Deleted Successfully'
     redirect_to categories_path, status: :see_other
   end
 

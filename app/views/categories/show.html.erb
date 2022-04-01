@@ -1,2 +1,7 @@
 <h1 class="text-center my-4">Category: <%= @category.name%></h1>
 <%= render 'articles/article',obj:@category_articles%>
+<% if logged_in? and current_user.admin%>
+	<button class="button btn-primary d-md-none"><%= link_to 'Edit Category',edit_category_path,class:"text-light text-decoration-none" %></button>
+	<button class="button btn-primary new_article d-none d-md-block"><%= link_to 'Edit Category',edit_category_path,class:"text-light text-decoration-none" %></button>
+<% end %>
+<div class="float-start mb-2"><%== pagy_bootstrap_nav(@pagy) %></div>
